@@ -12,6 +12,12 @@
 决定系数R2 衡量模型预测能力好坏的标准
 
 
+
+
+
+
+
+
 ### Pandas
 
 [10 minutes to pandas](http://pandas.pydata.org/pandas-docs/version/0.24.0/getting_started/10min.html)
@@ -79,4 +85,83 @@ Entropy measures precisely how much freedom does a particle have to move around
 * Drawbacks:
   + convex and isotropic clusters. It responds poorly to elongated clusters or manifolds with irregular shapes
   + 
+
+### Manifold learning is an approach to non-linear dimensionality reduction.
+
+To aid visualization of the structure of a dataset, the dimension must be reduced in some way.
+The simplest way to accomplish this dimensionality reduction is by taking a random project of the data.
+liner dimensionality reduction frameworks have been designed, such as Principal Component Analysis, Independent Component Analysis, Linear Discriminant Analysis and others.
+Manifold learning can be thought of as an attempt to generalize linear frameworks like PCA to be sensitive to non-linear structure in data.
+Isomap algorithm is one of the earliest approaches to manifold learning.  <br/>
+Isomap can be viewed as an extension of Multi-dimensional Scaling or Kernal PCA. Isomap seeks a lower-dimensional embedding which maintains geodesic distances between all points. <br/>
+
+The Isomap algorithm comprises three stages:
+* Nearest neighbor search, Isomap uses sklearn.neighbors.BallTree for efficient neighbor search. 
+* Shortest-path graph search, Dijkstra's algorithm costs O[N2(k+log(N))] or the Floyd-Warshall algorithm.
+* Partial eigenvalue decomposition
+
+## Locally Linear Embedding
+
+LLE seeks a lower-dimensional projection of the data which preserves distances within local neighborhoods. It can be thought of as a series of local Principal Componment Analyses which are globally compared to find the best non-linear embedding.
+* Nearest Neightbors Search
+* Weight Matrix Construction 
+* Partial Eigenvalue Decomposition 
+  
+### Modified Locally Linear Embedding
+### Hessian Eigenmapping
+
+### Spectral Embedding
+
+### PCA for facial Recognition
+
+In the literature PCA also called eigenfaces when it applied to facial recognition.
+
+## Dimensionality Reduction
+
+Random Projection,  
+* Computionally more efficient than PCA
+* Commonly used in cases where dataset has too many dimensions for PCA to be directly computed
+* application running on a system with limited computational resources
+* Johnson-Lindendstrauss lemma
+  + A dataset of N points in high-dimensional Euclideanspace can be mapped down to a space in much lower dimension in a way that perserves the distance between the points to a large degree
+  + it can be mapped that's just multiplying by this random matrix
+  + it can be done in a way that preserves the distances between the points to a large degree
+  + the distance between each pair of points in this dataset after projection that is preserved in a certain way
+
+* In most of supervised and unsupervised learning, the algorithms really care about the distances between the points
+* these distances will be distorted a little bit but they can be preserved
+* How can they be preserved?
+
+Independent component analysis, ICA
+* cocktail party
+* Blind source separation and the problem that ICA solves
+* The classic example used to explain ICA is something called the cocktail party problem
+* Independent component analysis: Algorithms and Applications
+FastICA algorithm
+1. center, white X
+2. choose initial random weight matrix W1,..Wn
+3. Estimate W, containing Vectors
+4. Decorrelate W
+5. repeat from step 3 until converged
+   
+Hyper-tangent function
+
+
+## Plotting 
+* 对于数据中的每一对特征构造一个散布矩阵
+```python
+pd.plotting.scatter_matrix(data, alpha=0.3, figsize=(14,8), diagonal='kde')
+```
+
+## Gradient Descent
+Error function is a function of the weights. The gradient of E is given by the vector sum of the partial derivatives of E with respect to W1 and W2. We'll take the negative of the gradient of the error function at that point.
+**The gradient of the error function is precisely the vector formed by the partial derivatives of the error function with respect to the weights and bias. **
+
+$\sigma\prime(x)=\sigma(x)(1-\sigma(x))\hat{y}$
+
+
+
+## Words
+* Compression factor
+* Delve deep into the math
 
